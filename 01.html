@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- integrity : 防止资源被篡改 -->
+    <!-- crossorigin : 跨域资源 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <button class="add">加一</button>
+    <span class="counter">0</span>
+    <button class="sub">减一</button>
+    <script>
+        // 文档完全加载完毕 $(()=>{})
+        $(() => {
+            console.log('document ready')
+
+            let counter = 0
+            const addEl = $('.add')
+            const counterEl = $('.counter')
+            const subEl = $('.sub')
+
+            addEl.on('click', () => {
+                counterEl.text(++counter)
+            })
+            subEl.on('click', () => {
+                counterEl.text(--counter)
+            })
+        })
+
+        // window load 事件
+        $(window).on('load', () => {
+            console.log('window load')
+        })
+    </script>
+</body>
+
+</html>

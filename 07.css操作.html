@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list" class="panel">
+        <li class="li-1">1</li>
+        <li class="li-2">2</li>
+        <li class="li-3">3</li>
+        <li class="li-4">4</li>
+        <li class="li-5">5</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            // 获取 ul 的宽度
+            console.log($('ul').width()) // number  => 200
+            console.log($('ul').css('width')) // string => '157px'
+
+            // 获取宽度和高度
+            console.log($('ul').css(['width', 'height'])) // object => {width: '157px', height: '100px'}
+
+            // 设置
+            $('ul').width('300px') //OR $('ul').width('300')
+
+            // 设置样式
+            $('ul li').odd().css({
+                color: 'red',
+                backgroundColor: 'yellow'
+            })
+
+            // 添加 class
+            $('ul').addClass('ulRef')
+        })
+    </script>
+</body>
+
+</html>

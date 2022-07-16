@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li class="li-1">1</li>
+        <li class="li-2">2</li>
+        <li class="li-3">3</li>
+        <li class="li-4">4</li>
+        <li class="li-5">5</li>
+    </ul>
+    <button class="btn">切换 class</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            $('ul').addClass('ulRef') // OR $('ul').addClass(['ulRef', 'ulRef-2'])
+
+            // 判断是否存在摸个 class
+            console.log($('ul').hasClass('ulRef')) // true
+
+            // 删除 class
+            $('ul').removeClass('ulRef') // 指定
+            $('li').removeClass() // 删除全部 class
+
+
+            // 切换 class
+            $('.btn').click(() => {
+                // 添加和删除 class 直接来回切换
+                $('ul').toggleClass('toggleClass')
+            })
+        })
+    </script>
+</body>
+
+</html>

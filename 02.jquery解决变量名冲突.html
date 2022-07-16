@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 解决变量名冲突，返回新的变量名
+        var newJQuery = jQuery.noConflict(true);
+
+        /**
+         * 源码实现
+        */
+
+        // 先将第三方库的 $ | JQuery 变量保存下来
+        const _$ = window.$
+        const _jQuery = window.jQuery
+
+        // 调用该方法几个解决变量名冲突
+        function noConflict(deep) {
+            // 如果变量 $ 冲突
+            if (window.$ === jQuery) {
+                // 将之前的 $ | JQuery 变量替换为新的 $ | JQuery 变量
+                window.$ = _$
+            }
+            // 解决 jQuery 变量也存在冲突
+            if (deep && window.jQuery === jQuery) {
+                window.jQuery = _jQuery
+            }
+
+            // 返回新的 JQuery 对象 (这个对象是原始的 JQuery 对象(自己库的对象))
+            return jQuery
+        }
+    </script>
+</body>
+
+</html>
