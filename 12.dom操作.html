@@ -45,16 +45,16 @@
 
 
 
-            // appendTo() 将匹配元素插入到指定的内容或元素内部的末尾。
+            // appendTo() 将匹配的内容或元素插入到目标内部的末尾。
             $('#list').appendTo('.container') // span 元素之后
 
-            // prependTo() 将匹配元素插入到指定的内容或元素内部的开头。
+            // prependTo() 将匹配的内容或元素插入到目标内部的开头。
             $('#list').prependTo('.container') // span 元素之前
 
-            // insertAfter() 将匹配元素插入到指定的内容或元素外部的后面。
+            // insertAfter() 将匹配的内容或元素插入到目标内部的外部的后面。
             $('#list').insertAfter('.container') // container 元素之后
 
-            // insertBefore() 将匹配元素插入到指定的内容或元素外部的前面。
+            // insertBefore() 将匹配的内容或元素插入到目标内部的外部的前面。
             $('#list').insertBefore('.container') // container 元素之前
 
 
@@ -76,6 +76,14 @@
             // (method) JQuery.replaceWith(newContent: string | any[] | JQuery | Element | Text): JQuery
             $('span')
                 .replaceWith($('span').addClass('span-2').text('1'))
+
+
+            // 元素克隆 (method) JQuery.clone(withDataAndEvents?: boolean, deepWithDataAndEvents?: boolean): JQuery
+            // 对匹配元素进行克隆 参数为 true 时，将会复制元素的数据和事件。
+            $('.container').click(()=>{
+                alert('click')
+            })
+            $('.container').clone(true).appendTo($('body'))
         })
     </script>
 </body>
