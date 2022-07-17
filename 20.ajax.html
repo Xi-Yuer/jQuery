@@ -9,16 +9,32 @@
 </head>
 
 <body>
+    <button>取消请求</button>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
+
         // 文档完全解析完成
         $(() => {
             $.ajax({
                 url: 'http://httpbin.org/get',
-                method: 'GET'
+                method: 'GET',
+                timeout: 5000,
+                dataType: 'json',
             }).then(data => {
                 console.log(data);
             });
+            // 取消请求
+            var jqajax = $.ajax('http://httpbin.org/delay/7', {
+                method: 'GET',
+                timeout: 10000,
+                success: function (data) {
+                    console.log(data);
+                },
+            })
+            // 手动取消请求(不能使用 promise.then,不然返回的不是一个ajax对象)
+            $('button').click(() => {
+                jqajax.abort();
+            })
 
             $.get('http://httpbin.org/get').then(data => {
                 console.log(data);
@@ -29,6 +45,30 @@
                 age: 18
             }
             ).then(data => {
+                console.log(data);
+            });
+
+            $.ajax({
+                url: 'http://httpbin.org/post',
+                method: 'POST',
+                data: {
+                    name: 'jquery',
+                    age: 18
+                },
+                contentType: 'application/x-www-form-urlencoded', // 默认
+            }).then(data => {
+                console.log(data);
+            });
+
+            $.ajax({
+                url: 'http://httpbin.org/post',
+                method: 'POST',
+                data: JSON.stringify({
+                    name: 'jquery',
+                    age: 18
+                }),
+                contentType: 'application/text', // 默认
+            }).then(data => {
                 console.log(data);
             });
         })
