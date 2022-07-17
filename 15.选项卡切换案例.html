@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .nav{
+        background-color: #43240c;
+        color: white;
+    }
+    .nav-bar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+        width: 1200px;
+        line-height: 50px;
+        margin: 0 auto;
+    }
+    .item {
+        width: 160px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .active {
+        background-color: #fee44e;
+        color: #43240c;
+    }
+</style>
+<body>
+    <div class="nav">
+        <div class="nav-bar">
+            <div class="item active">首页</div>
+            <div class="item">页面一</div>
+            <div class="item">页面二</div>
+            <div class="item">页面三</div>
+            <div class="item">页面四</div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            $('div.nav-bar').on('click', 'div.item', function() {
+                // 过滤器 siblings() 可以获取兄弟节点
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn1">btn1</button>
+    <button class="btn2">btn2</button>
+    <button class="btn3">btn3</button>
+    <button class="btn4">btn4</button>
+    <button class="btn5">btn5</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            // click 和 on 的区别
+            // on：可以绑定多个事件，还可以传递参数，用于筛选触发事件的后代元素，给事件添加命名空间
+            // JQuery.on(events: string, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery
+            // 单击事件
+            $('.btn1').click(() => {
+                alert('bnt1Click')
+            })
+            // 命名空间
+            $('.btn2').on('click.namespace', () => {
+                alert('bnt2Click')
+            })
+
+            // mouseEnter 事件 ... mouseLeave 事件 ... mouseMove 事件 ... mouseOver 事件 ... mouseOut 事件
+            $('.btn3').mouseenter(() => {
+                alert('bnt3MouseEnter')
+            })
+            $('.btn3').on('mouseenter', () => {
+                alert('bnt3MouseEnter')
+            })
+
+            // 取消事件监听
+            // JQuery.off(events: string, selector?: string, handler?: (eventObject: JQueryEventObject) => any): JQuery
+            $('.btn1').off('click.namespace') // 取消单击事件
+            $('.btn2').off() // 取消所有事件
+
+            // 程序自动触发事件
+            $(document).click(()=>{console.log('bodyClick')})
+            // 阻止事件冒泡 
+            $('.btn4').click((e) => { e.stopPropagation(), console.log('bnt4Click', e) })
+            $('.btn4').trigger('click') // 自动触发触发单击事件
+
+        })
+    </script>
+</body>
+
+</html>

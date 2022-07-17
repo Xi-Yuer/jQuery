@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        user-select: none;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <button class="btnShow">显示</button>
+    <button class="btnHidden">隐藏</button>
+    <button class="btnShowAnimate">animate显示</button>
+    <button class="btnHiddenAnimate">animate隐藏</button>
+    <button class="btnToggle">隐藏/显示</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            $('.btnShow').click(() => {
+                $('.box').show(250, () => {
+                    console.log('显示完成')
+                });
+            })
+            $('.btnHidden').click(() => {
+                $('.box').hide(250, () => {
+                    console.log('隐藏完成')
+                });
+            })
+
+            $('.btnShowAnimate').click(() => {
+                $('.box').animate({
+                    width: '200px',
+                    height: '200px',
+                    opacity: 1,
+                }, 250, () => {
+                    console.log('动画完成')
+                });
+            })
+
+            $('.d').click(() => {
+                $('.box').animate({
+                    width: 0,
+                    height: 0,
+                    opacity: 0
+                }, 250, () => {
+                    console.log('隐藏完成')
+                });
+            })
+            //  OR
+            $('.btnHiddenAnimate').click(() => {
+                $('.box').animate({
+                    width: 0,
+                    height: 0,
+                    opacity: 0
+                },
+                    {
+                        duration: 250,
+                        complete: function () { }
+                    }
+                )
+            })
+
+            $('.btnToggle').click(() => {
+                $('.box').toggle(250, () => {
+                    console.log('完成')
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

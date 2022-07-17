@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <button class="start">开始动画</button>
+    <button class="stop">停止动画</button>
+    <button class="queue">查看动画队列</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            $('.start').click(() => {
+                // 动画队列 依次执行
+                $('.box').animate({
+                    top: 100,
+                }, 2000)
+
+                $('.box').animate({
+                    left: 100,
+                }, 2000)
+
+                $('.box').animate({
+                    top: 0,
+                }, 2000)
+
+                $('.box').animate({
+                    left: 0,
+                }, 2000)
+            })
+
+            $('.stop').click(() => {
+                // JQuery.stop(clearQueue?: boolean, jumpToEnd?: boolean): JQuery
+                // $('.box').stop() // 停止当前正在执行的动画，剩下的动画仍然会依次执行
+
+                // $('.box').stop(true) // 停止所有动画
+
+                $('.box').stop(true, true) // 停止所有动画，并且清除动画队列, 并立即执行完当前动画
+            })
+
+            $('.queue').click(() => {
+                // 查看动画队列  JQuery.queue(queueName?: string): any[]
+                console.log($('.box').queue())  // 返回动画队列
+            })
+        })
+    </script>
+</body>
+
+</html>
