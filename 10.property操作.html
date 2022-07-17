@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="panel" id="list" name="tom" age="18">
+        <li class="li-1">1</li>
+        <li class="li-2">2</li>
+        <li class="li-3">3</li>
+        <li class="li-4">4</li>
+        <li class="li-5">5</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            // 获取 property 属性(只能获取到标准的 property 属性)
+            console.log($('ul').prop('id')) // list
+
+            // 修改 property
+            $('ul').prop('id', 'list-2') // (key,value)
+            // 修改多个
+            $('ul').prop({
+                id: 'list-3',
+                class: 'ww',
+                jq: '添加自定义属性'
+            })
+
+            // 删除 property 属性(不能删除标准的 property 属性)
+
+            $('ul').removeProp('jq') // 删除 id 属性
+        })
+    </script>
+</body>
+
+</html>

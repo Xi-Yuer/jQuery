@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="panel" id="list" name="tom" age="18" data-name="tom">
+        <li class="li-1">1</li>
+        <li class="li-2">2</li>
+        <li class="li-3">3</li>
+        <li class="li-4">4</li>
+        <li class="li-5">5</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            //  设置 data-xxx 属性
+            $('ul').data('id', '1') // (key,value)
+
+            //  获取 data-xxx 属性(从缓存里面获取 data-xxx 属性)
+            console.log($('ul').data()) // 获取所有的data-xxx属性 {id: '1', name: 'tom'}
+            console.log($('ul').data('name')) // 获取单个 tom
+
+            // 修改 data-xxx 属性(注意：修改的是缓存里面的 data-name)
+            $('ul').data('name', 'sily') // (key,value)
+            console.log($('ul').data('name')) // sily
+
+
+            // 删除 data-xxx 属性(注意：删除的是缓存里面的 data-name)
+            $('ul').removeData('name') // (key)
+            console.log($('ul').data('name')) // tom
+
+
+
+            console.log("%O", $('ul'))
+
+            /*
+            data-xxx 属性的设置和获取都是针对缓存里面进行的
+            设置和修改不会影响到原来的 data-xxx
+            获取 data-xxx 先从缓存中获取，如果缓存中不存在则从原来的 data-xxx 中获取，并将获取到的 data-xxx 存取到缓存中
+            */
+        })
+    </script>
+</body>
+
+</html>

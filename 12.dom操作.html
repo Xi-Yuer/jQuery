@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="panel" id="list">
+        <li class="li-1">1</li>
+        <li class="li-2">2</li>
+        <li class="li-3">3</li>
+        <li class="li-4">4</li>
+        <li class="li-5">5</li>
+    </ul>
+    <li class="li-10">10</li>
+
+    <div class="container">
+        <span>默认内容</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        // 文档完全解析完成
+        $(() => {
+            // (method) JQuery.append(content1: string | any[] | JQuery | Element | DocumentFragment | Text, ...content2: any[]): JQuery
+
+            //  append() 方法将内容插入到匹配元素内部的末尾。
+            $('ul').append('<li class="li-6">6</li>')
+            $('ul').append('文本')
+
+            // prepend() 方法将内容插入到匹配元素内部的开头。
+            $('ul').prepend('<li class="li-7">7</li>')
+
+            // after() 方法将内容插入到匹配元素后面。
+            $('ul').after('<li class="li-8">8</li>')
+
+            // before() 方法将内容插入到匹配元素前面。
+            $('ul').before('<li class="li-9">9</li>')
+
+            // 移动元素到指定位置
+            $('#list').append($('.li-10'))
+
+
+
+            // appendTo() 将匹配元素插入到指定的内容或元素内部的末尾。
+            $('#list').appendTo('.container') // span 元素之后
+
+            // prependTo() 将匹配元素插入到指定的内容或元素内部的开头。
+            $('#list').prependTo('.container') // span 元素之前
+
+            // insertAfter() 将匹配元素插入到指定的内容或元素外部的后面。
+            $('#list').insertAfter('.container') // container 元素之后
+
+            // insertBefore() 将匹配元素插入到指定的内容或元素外部的前面。
+            $('#list').insertBefore('.container') // container 元素之前
+
+
+
+            // 删除匹配元素的所有子节点
+            $('ul').empty() // 自身不会删除
+            // (method) JQuery.remove(selector?: string): JQuery
+            $('ul').remove() // 自身会删除
+
+
+            // replaceAll(target) 将目标元素替换为匹配元素。 
+            // (method) JQuery.replaceWith(newContent: string | any[] | JQuery | Element | Text): JQuery
+            $('<span>')
+                .addClass('span-1')
+                .css('color', 'red')
+                .replaceAll($('li'))
+
+            // replaceWith(newContent) 将匹配元素替换为指定内容。 
+            // (method) JQuery.replaceWith(newContent: string | any[] | JQuery | Element | Text): JQuery
+            $('span')
+                .replaceWith($('span').addClass('span-2').text('1'))
+        })
+    </script>
+</body>
+
+</html>
